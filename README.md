@@ -1,5 +1,36 @@
 # AssetControl.SmallBiz
 
+Small, modular ASP.NET Core (net9.0) sample derived from AssetControl Enterprise. Purpose: fast MVP for small businesses with modular structure for Customers / Products / Orders.
+
+Quick start
+
+1. Build
+
+```powershell
+cd "src\AssetControl.SmallBiz"
+dotnet build
+```
+
+2. Run
+
+```powershell
+dotnet run
+```
+
+3. Open browser: `http://localhost:5000` - pages: `/Customers`, `/Products`, `/Orders`.
+
+Notes
+- Database: SQLite (default `smallbiz.db`). Migrations are included under `Migrations/`.
+- Architecture: modules under `Modules/<ModuleName>` with `Models`, `Dtos`, `Pages`, `Services`.
+
+Roadmap
+- Add validation (DataAnnotations / FluentValidation)
+- Introduce DTOs and AutoMapper mapping
+- Add integration tests with TestServer
+- Add Dockerfile and CI container job
+- Add JWT authentication and protect write endpoints
+# AssetControl.SmallBiz
+
 Micro project focused on small manufacturing/service businesses. Minimal API + EF Core (SQLite).
 
 Run locally:
