@@ -1,4 +1,6 @@
 using AssetControl.SmallBiz.Modules.Customers.Models;
+using AssetControl.SmallBiz.Modules.Customers.Dtos;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace AssetControl.SmallBiz.Modules.Customers.Services;
@@ -6,22 +8,35 @@ namespace AssetControl.SmallBiz.Modules.Customers.Services;
 public class CustomerService : ICustomerService
 {
     private readonly AppDbContext _db;
-    public CustomerService(AppDbContext db) => _db = db;
+    private readonly IMapper _mapper;
+    public CustomerService(AppDbContext db, IMapper mapper) { _db = db; _mapper = mapper; }
 
-    public async Task<List<Customer>> GetAllAsync() => await _db.Customers.OrderBy(c => c.Id).ToListAsync();
-
-    public async Task<Customer?> GetByIdAsync(int id) => await _db.Customers.FindAsync(id);
-
-    public async Task<Customer> CreateAsync(Customer customer)
+    public async Task<List<CustomerReadDto>> GetAllAsync()
     {
-        _db.Customers.Add(customer);
-        await _db.SaveChangesAsync();
-        return customer;
+        var entities = await _db.Customers.OrderBy(c => c.Id).ToListAsync();
+        return _mapper.Map<List<CustomerReadDto>>(entities);
     }
 
-    public async Task UpdateAsync(Customer customer)
+    public async Task<CustomerReadDto?> GetByIdAsync(int id)
     {
-        _db.Customers.Update(customer);
+        var entity = await _db.Customers.FindAsync(id);
+        return entity == null ? null : _mapper.Map<CustomerReadDto>(entity);
+    }
+
+    public async Task<CustomerReadDto> CreateAsync(CustomerCreateDto dto)
+    {
+        var entity = _mapper.Map<Customer>(dto);
+        _db.Customers.Add(entity);
+        await _db.SaveChangesAsync();
+        return _mapper.Map<CustomerReadDto>(entity);
+    }
+
+    public async Task UpdateAsync(int id, CustomerUpdateDto dto)
+    {
+        var existing = await _db.Customers.FindAsync(id);
+        if (existing == null) return;
+        _mapper.Map(dto, existing);
+        _db.Customers.Update(existing);
         await _db.SaveChangesAsync();
     }
 

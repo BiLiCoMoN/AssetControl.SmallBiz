@@ -1,12 +1,12 @@
-using AssetControl.SmallBiz.Modules.Customers.Models;
+using AssetControl.SmallBiz.Modules.Customers.Dtos;
 
 namespace AssetControl.SmallBiz.Modules.Customers.Services;
 
 public interface ICustomerService
 {
-    Task<List<Customer>> GetAllAsync();
-    Task<Customer?> GetByIdAsync(int id);
-    Task<Customer> CreateAsync(Customer customer);
-    Task UpdateAsync(Customer customer);
+    Task<List<CustomerReadDto>> GetAllAsync();
+    Task<CustomerReadDto?> GetByIdAsync(int id);
+    Task<CustomerReadDto> CreateAsync(CustomerCreateDto dto);
+    Task UpdateAsync(int id, CustomerUpdateDto dto);
     Task DeleteAsync(int id);
 }
