@@ -1,4 +1,6 @@
-using AssetControl.SmallBiz.Models;
+using AssetControl.SmallBiz.Modules.Customers.Models;
+using AssetControl.SmallBiz.Modules.Products.Models;
+using AssetControl.SmallBiz.Modules.Orders.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AssetControl.SmallBiz;

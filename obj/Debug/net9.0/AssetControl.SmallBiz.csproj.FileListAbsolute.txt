@@ -150,3 +150,5 @@ C:\Users\e342009\Desktop\Meus projetos\AssetControl-Enterprise\src\AssetControl.
 C:\Users\e342009\Desktop\Meus projetos\AssetControl-Enterprise\src\AssetControl.SmallBiz\obj\Debug\net9.0\AssetControl.SmallBiz.pdb
 C:\Users\e342009\Desktop\Meus projetos\AssetControl-Enterprise\src\AssetControl.SmallBiz\obj\Debug\net9.0\AssetControl.SmallBiz.genruntimeconfig.cache
 C:\Users\e342009\Desktop\Meus projetos\AssetControl-Enterprise\src\AssetControl.SmallBiz\obj\Debug\net9.0\ref\AssetControl.SmallBiz.dll
+C:\Users\e342009\Desktop\Meus projetos\AssetControl-Enterprise\src\AssetControl.SmallBiz\obj\Debug\net9.0\AssetControl.SmallBiz.RazorAssemblyInfo.cache
+C:\Users\e342009\Desktop\Meus projetos\AssetControl-Enterprise\src\AssetControl.SmallBiz\obj\Debug\net9.0\AssetControl.SmallBiz.RazorAssemblyInfo.cs
