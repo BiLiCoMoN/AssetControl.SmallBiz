@@ -1,16 +1,15 @@
-using AssetControl.SmallBiz;
 using AssetControl.SmallBiz.Modules.Products.Models;
+using AssetControl.SmallBiz.Modules.Products.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 public class ProductsIndexModel : PageModel
 {
-    private readonly AppDbContext _db;
-    public ProductsIndexModel(AppDbContext db) => _db = db;
+    private readonly IProductService _service;
+    public ProductsIndexModel(IProductService service) => _service = service;
     public List<Product> Products { get; set; } = new();
 
     public async Task OnGetAsync()
     {
-        Products = await _db.Products.OrderBy(p => p.Id).ToListAsync();
+        Products = await _service.GetAllAsync();
     }
 }
