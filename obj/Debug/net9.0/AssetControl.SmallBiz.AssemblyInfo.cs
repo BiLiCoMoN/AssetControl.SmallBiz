@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssetControl.SmallBiz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d00bc512b891eb32370c1b2b5497d4c9e3169c67")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d03a012dc7ce3276d9f9b184dee181de34878995")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssetControl.SmallBiz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssetControl.SmallBiz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

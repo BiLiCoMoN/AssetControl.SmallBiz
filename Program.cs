@@ -1,5 +1,6 @@
 using AssetControl.SmallBiz;
 using AssetControl.SmallBiz.Models;
+using AssetControl.SmallBiz.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +14,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Ensure database created
+// Apply EF Core migrations at startup (preferred over EnsureCreated)
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.EnsureCreated();
+    db.Database.Migrate();
+    // seed data for development/testing
+    await SeedData.EnsureSeedDataAsync(db);
 }
 
 if (app.Environment.IsDevelopment())
