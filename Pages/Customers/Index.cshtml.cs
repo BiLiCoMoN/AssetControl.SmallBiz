@@ -1,16 +1,15 @@
-using AssetControl.SmallBiz;
 using AssetControl.SmallBiz.Modules.Customers.Models;
+using AssetControl.SmallBiz.Modules.Customers.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 public class IndexModel : PageModel
 {
-    private readonly AppDbContext _db;
-    public IndexModel(AppDbContext db) => _db = db;
+    private readonly ICustomerService _service;
+    public IndexModel(ICustomerService service) => _service = service;
     public List<Customer> Customers { get; set; } = new();
 
     public async Task OnGetAsync()
     {
-        Customers = await _db.Customers.OrderBy(c => c.Id).ToListAsync();
+        Customers = await _service.GetAllAsync();
     }
 }

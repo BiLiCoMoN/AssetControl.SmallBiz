@@ -16,6 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Add Razor Pages
 builder.Services.AddRazorPages();
+// Register module services
+builder.Services.AddScoped<AssetControl.SmallBiz.Modules.Customers.Services.ICustomerService, AssetControl.SmallBiz.Modules.Customers.Services.CustomerService>();
+builder.Services.AddScoped<AssetControl.SmallBiz.Modules.Products.Services.IProductService, AssetControl.SmallBiz.Modules.Products.Services.ProductService>();
+builder.Services.AddScoped<AssetControl.SmallBiz.Modules.Orders.Services.IOrderService, AssetControl.SmallBiz.Modules.Orders.Services.OrderService>();
 
 var app = builder.Build();
 
