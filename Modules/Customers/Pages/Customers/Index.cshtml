@@ -2,22 +2,24 @@
 @model IndexModel
 
 <h1>Customers</h1>
-<a class="btn btn-primary mb-3" asp-page="Create">Create New</a>
-<table class="table table-striped">
-    <thead><tr><th>Id</th><th>Name</th><th>Email</th><th>Phone</th><th></th></tr></thead>
-    <tbody>
-    @foreach(var c in Model.Customers)
-    {
-        <tr>
-            <td>@c.Id</td>
-            <td>@c.Name</td>
-            <td>@c.Email</td>
-            <td>@c.Phone</td>
-            <td>
-                <a class="btn btn-sm btn-secondary" asp-page="Edit" asp-route-id="@c.Id">Edit</a>
-                <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="@c.Id">Delete</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<a class="btn btn-touch mb-3" data-test="customer-create-btn" asp-page="Create">Create New</a>
+<div class="table-responsive-touch">
+    <table class="table table-striped">
+        <thead><tr><th>Id</th><th>Name</th><th>Email</th><th>Phone</th><th></th></tr></thead>
+        <tbody>
+        @foreach(var c in Model.Customers)
+        {
+            <tr data-test="customer-row-@c.Id">
+                <td>@c.Id</td>
+                <td>@c.Name</td>
+                <td>@c.Email</td>
+                <td>@c.Phone</td>
+                <td>
+                    <a class="btn btn-sm btn-touch" data-test="customer-edit-@c.Id" asp-page="Edit" asp-route-id="@c.Id">Edit</a>
+                    <a class="btn btn-sm btn-touch btn-danger" data-test="customer-delete-@c.Id" asp-page="Delete" asp-route-id="@c.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

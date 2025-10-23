@@ -2,21 +2,24 @@
 @model ProductsIndexModel
 
 <h1>Products</h1>
-<a class="btn btn-primary mb-3" asp-page="Create">Create New</a>
-<table class="table table-striped">
-    <thead><tr><th>Id</th><th>Name</th><th>Price</th><th>Stock</th><th></th></tr></thead>
-    <tbody>
-    @foreach(var p in Model.Products)
-    {
-        <tr>
-            <td>@p.Id</td>
-            <td>@p.Name</td>
-            <td>@p.Price</td>
-            <td>@p.Stock</td>
-            <td>
-                <!-- actions placeholder -->
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<a class="btn btn-touch mb-3" data-test="product-create-btn" asp-page="Create">Create New</a>
+<div class="table-responsive-touch">
+    <table class="table table-striped">
+        <thead><tr><th>Id</th><th>Name</th><th>Price</th><th>Stock</th><th></th></tr></thead>
+        <tbody>
+        @foreach(var p in Model.Products)
+        {
+            <tr data-test="product-row-@p.Id">
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.Stock</td>
+                <td>
+                <a class="btn btn-sm btn-touch" data-test="product-edit-@p.Id" asp-page="Edit" asp-route-id="@p.Id">Edit</a>
+                <a class="btn btn-sm btn-touch btn-danger" data-test="product-delete-@p.Id" asp-page="Delete" asp-route-id="@p.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
